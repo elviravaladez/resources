@@ -1,0 +1,91 @@
+What are JSPs and why do we use them?
+    -JSP stands for Java Server Pages. JSP allows us to create HTML pages with
+        dynamic content by letting us mix Java code into our HTML. Using JSPs
+        is much easier than writing HTML inside of strings inside of servlets.
+
+    -JSP file is executed on the server, and what the user sees in their
+        browser is the end result of that process. That is, the end result is
+        just HTML; web browsers don't ever see the JSP as we see it.
+
+
+
+What are JSP tags?
+    - tag-like elements that start with <% and end with %>. These are
+        used to define the dynamic parts of the page. When the JSP file is
+        processed, everything inside of the <% %> tags are evaluated,
+        and a purely HTML response is produced.
+
+
+
+  Directive tag?
+    EXAMPLE: <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+    -Directive: set values for the entire file
+
+    -We can use it similar to the meta tag
+
+    -Directives allow us to set conditions that apply to the
+        entire JSP file. The example above is a page directive,
+        and is used to specify the content type of this page. Most
+        JSP files you create will include this directive.
+
+
+
+  Declaration tag?
+    EXAMPLE: <%! int i = 0; %>
+             <%! int a, b, c; %>
+             <%! Circle a = new Circle(2.0); %>
+
+    -Used to declare variables
+
+    -A declaration declares one or more variables or methods that you can use in
+        Java code later in the JSP file. You must declare the variable or method
+        before you use it in the JSP file.
+
+
+
+  Expression tag?
+    EXAMPLE: <html>
+                <head><title>A Comment Test</title></head>
+
+                <body>
+                   <p>Today's date: <%= (new java.util.Date()).toLocaleString()%></p>
+                </body>
+             </html>
+
+    -Used to evaluate variables
+
+    -A JSP expression element contains a scripting language expression that is
+        evaluated, converted to a String, and inserted where the expression
+        appears in the JSP file.
+
+    -Because the value of an expression is converted to a String, you can use an
+        expression within a line of text, whether or not it is tagged with HTML,
+        in a JSP file.
+
+
+
+
+
+  Scriptlet tag? Why are they no longer commonly used?
+    B/c it's terrible don't use them
+
+
+
+  JSP comment tag vs. HTML comment tag?
+    -JSP tags are read server side, so they are never seen by the browser
+
+
+
+What are partials and why are they awesome?
+    EXAMPLE:
+
+        -A partial is a page with a piece of HTML or other code that can be included into
+            other pages. Best examples are header and footer files that are being included
+            into all pages of the website. You may also have complicated logic that
+            you would like to separate or some repetitive code.
+
+
+
+How can I use them in JSPs?
+    -Use as a template for your documents
