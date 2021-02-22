@@ -245,3 +245,52 @@ RELATIONAL DATABASE RELATIONSHIP TYPES
 
                 - students <-> instructors
                     A student has many instructors and an instructor teaches many students.
+
+    =============
+    LECTURE NOTES
+    =============
+
+        - Use mappedBy annotation with
+            - @ManyToMany
+            - @OneToMany
+
+        - When hibernate sees that something has a @ManyToMany relationship, it will
+
+        - @ManyToMany(cascade = CascadeType.ALL)
+            MySQL -> ON DELETE CASCADE
+                ON DELETE CASCADE is an optional clause in a foreign key declaration. So it goes
+                with the foreign key declaration. (Meaning, in the "child" table.) ... it could
+                mean delete the Parent record when the Child record is deleted, or it could mean
+                delete the Child record when the Parent is deleted.
+
+        - Does not matter with table you decide to be the JoinTable
+
+
+    =============================================================================
+    We used the @ManyToMany annotation on our models to define this relationship.
+    =============================================================================
+
+        Each property annotated by the @ManyToMany annotation is a collection type, and the type
+        of each element is that of the other model class. One side of the relationship will
+        contain the @JoinTable annotation as well, and the other side will define the mappedBy
+        parameter in the @ManyToMany annotation.
+
+        Code:
+        -----------------------------------------------------------------
+            // in the Carrier class
+            @ManyToMany(cascade = CascadeType.ALL)
+            @JoinTable(
+                name = "carriers_phones",
+                joinColumns = {@JoinColumn(name = "carrier_id")},
+                inverseJoinColumns = {@JoinColumn(name = "phone_id")}
+            )
+            private List<Phone> phones = new ArrayList<>();
+        -----------------------------------------------------------------
+
+
+        Code:
+        -----------------------------------------------------------------
+            // in the Phone class
+            @ManyToMany(mappedBy = "phones")
+            private List<Carrier> carriers = new ArrayList<>();
+        -----------------------------------------------------------------
