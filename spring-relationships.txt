@@ -75,41 +75,41 @@ ONE-TO-MANY
 
     Code:
     -----------------------------------------------------------------
-    @Entity
-    @Table(name="ads")
-    public class Ad {
-        /* ... */
+        @Entity
+        @Table(name="ads")
+        public class Ad {
+            /* ... */
 
-       @OneToMany(cascade = CascadeType.ALL, mappedBy = "ad")
-       private List<AdImage> images;
-    }
+           @OneToMany(cascade = CascadeType.ALL, mappedBy = "ad")
+           private List<AdImage> images;
+        }
 
-    @Entity
-    @Table(name="ad_images")
-    public class AdImage {
-        @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private long id;
+        @Entity
+        @Table(name="ad_images")
+        public class AdImage {
+            @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+            private long id;
 
-        @Column(nullable = false)
-        private String path;
+            @Column(nullable = false)
+            private String path;
 
-        @ManyToOne
-        @JoinColumn (name = "ad_id")
-        private Ad ad;
-    }
+            @ManyToOne
+            @JoinColumn (name = "ad_id")
+            private Ad ad;
+        }
     -----------------------------------------------------------------
 
     The "ad_images" definition would look like the following:
 
     Code:
     -----------------------------------------------------------------
-    CREATE TABLE ad_images (
-        id BIGINT NOT NULL AUTO_INCREMENT,
-        path VARCHAR(255) NOT NULL,
-        ad_id BIGINT,
-        PRIMARY KEY (id),
-        FOREIGN KEY (ad_id) REFERENCES ads(id)
-    );
+        CREATE TABLE ad_images (
+            id BIGINT NOT NULL AUTO_INCREMENT,
+            path VARCHAR(255) NOT NULL,
+            ad_id BIGINT,
+            PRIMARY KEY (id),
+            FOREIGN KEY (ad_id) REFERENCES ads(id)
+        );
     -----------------------------------------------------------------
 
 
@@ -123,51 +123,51 @@ MANY-TO-MANY
 
     Code:
     -----------------------------------------------------------------
-    @Entity
-    @Table(name="ads")
-    public class Ad {
-        /* ... */
+        @Entity
+        @Table(name="ads")
+        public class Ad {
+            /* ... */
 
-       @ManyToMany(cascade = CascadeType.ALL)
-       @JoinTable(
-           name="ads_categories",
-           joinColumns={@JoinColumn(name="ad_id")},
-           inverseJoinColumns={@JoinColumn(name="category_id")}
-       )
-       private List<AdCategory> categories;
-    }
+           @ManyToMany(cascade = CascadeType.ALL)
+           @JoinTable(
+               name="ads_categories",
+               joinColumns={@JoinColumn(name="ad_id")},
+               inverseJoinColumns={@JoinColumn(name="category_id")}
+           )
+           private List<AdCategory> categories;
+        }
 
-    @Entity
-    @Table(name="categories")
-    public class AdCategory {
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private long id;
+        @Entity
+        @Table(name="categories")
+        public class AdCategory {
+            @Id
+            @GeneratedValue(strategy = GenerationType.IDENTITY)
+            private long id;
 
-        @Column(nullable = false)
-        private String name;
+            @Column(nullable = false)
+            private String name;
 
-        @ManyToMany(mappedBy = "categories")
-        private List<Ad> ads;
-    }
+            @ManyToMany(mappedBy = "categories")
+            private List<Ad> ads;
+        }
     -----------------------------------------------------------------
 
     This would generate the following MySQL code:
 
     Code:
     -----------------------------------------------------------------
-    CREATE TABLE categories (
-        id BIGINT NOT NULL AUTO_INCREMENT,
-        name VARCHAR(255) NOT NULL,
-        PRIMARY KEY (id)
-    );
+        CREATE TABLE categories (
+            id BIGINT NOT NULL AUTO_INCREMENT,
+            name VARCHAR(255) NOT NULL,
+            PRIMARY KEY (id)
+        );
 
-    CREATE TABLE ads_categories (
-        ad_id BIGINT NOT NULL,
-        category_id BIGINT NOT NULL,
-        FOREIGN KEY (ad_id) REFERENCES ads(id),
-        FOREIGN KEY (category_id) REFERENCES categories(id)
-    );
+        CREATE TABLE ads_categories (
+            ad_id BIGINT NOT NULL,
+            category_id BIGINT NOT NULL,
+            FOREIGN KEY (ad_id) REFERENCES ads(id),
+            FOREIGN KEY (category_id) REFERENCES categories(id)
+        );
     -----------------------------------------------------------------
 
 
@@ -179,9 +179,9 @@ WORKING WITH RELATIONSHIPS
 
     Code:
     -----------------------------------------------------------------
-    Ad ad = adDao.getOne(1L);
-    String username = ad.getOwner().getUsername();
-    System.out.println(username);
+        Ad ad = adDao.getOne(1L);
+        String username = ad.getOwner().getUsername();
+        System.out.println(username);
     -----------------------------------------------------------------
 
 
@@ -190,10 +190,10 @@ WORKING WITH RELATIONSHIPS
 
     Code:
     -----------------------------------------------------------------
-    <h3>Here are the categories for the ad:</h3>
-    <ul>
-        <li th:each="category : ${ad.categories}" th:text="${category.name}" />
-    </ul>
+        <h3>Here are the categories for the ad:</h3>
+        <ul>
+            <li th:each="category : ${ad.categories}" th:text="${category.name}" />
+        </ul>
     -----------------------------------------------------------------
 
 
@@ -202,10 +202,10 @@ WORKING WITH RELATIONSHIPS
 
     Code:
     -----------------------------------------------------------------
-    User user = userDao.getOne(1L); // just use the first user in the db
-    Ad ad = new Ad();
-    ad.setTitle("Bike for sale");
-    ad.setDescription("7 speed bike in good condition.");
-    ad.setOwner(user);
-    adDao.save(ad);
+        User user = userDao.getOne(1L); // just use the first user in the db
+        Ad ad = new Ad();
+        ad.setTitle("Bike for sale");
+        ad.setDescription("7 speed bike in good condition.");
+        ad.setOwner(user);
+        adDao.save(ad);
     -----------------------------------------------------------------
