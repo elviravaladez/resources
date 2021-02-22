@@ -209,3 +209,39 @@ WORKING WITH RELATIONSHIPS
         ad.setOwner(user);
         adDao.save(ad);
     -----------------------------------------------------------------
+
+======================================
+RELATIONAL DATABASE RELATIONSHIP TYPES
+======================================
+
+    ONE-TO-MANY & MANY-TO-ONE
+        - The case where data from multiple rows one table is associated with a single record
+            from another table.
+
+        - Remember that one-to-many and many-to-one are the same relationship, seen from different
+            sides of it.
+
+        - The table on the many side of the relationship will have a column that is a FOREIGN KEY
+            to the PRIMARY KEY of the other table.
+
+            EXAMPLES:
+                - users (one) -> blog posts (many)
+                    A user has many blog posts and a blog post belongs to a single user.
+
+                - students (many) -> cohorts (one)
+                    A student belongs to a SINGLE cohort, and a cohort has many students.
+
+    MANY-TO-MANY
+        - The case where data from the multiple rows one table can be associated with multiple records
+            from another table.
+
+        - Neither table has a foreign key on it, rather a JOIN TABLE or LINK TABLE is created that
+            contains foreign keys to other tables.
+
+            EXAMPLES:
+                - blog posts <-> topics
+                    A blog post might be about many different topics, and a single topic might
+                        have multiple blog posts.
+
+                - students <-> instructors
+                    A student has many instructors and an instructor teaches many students.
