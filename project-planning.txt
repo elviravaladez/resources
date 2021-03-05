@@ -1,0 +1,21 @@
+----------------
+PROJECT PLANNING
+----------------
+
+    1. Summarize the app ("elevator pitch") and identify CRUD entities
+    2. Create user stories
+    3. Extract a feature list from the user stories
+    4. Diagram the DB design
+    5. Create wireframes and possibly mockups for all application views
+    6. Transfer planning documents to GitHub repo
+    7. Transfer feature list to Kanban Board
+
+    ----------------------------
+    PROJECT SUMMARY AND ENTITIES
+    ----------------------------
+        Summary: the elevator pitch for the app idea in a brief synopsis
+        Entities: the main records the app will CRUD
+
+    ------------
+    USER STORIES
+    ------------
