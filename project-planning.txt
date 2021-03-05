@@ -26,3 +26,28 @@ PROJECT PLANNING
         - A development task to complete a user story. Multiple tasks and subtasks may fall under the same story
         - Need to have features vs. Nice to have features
         - Be intentional and aware of the timeline
+
+        Ex: Story -> As a visiter, I navigate to the app domain and see the landing page containing the app pitch and a call to sign up.
+            - feat: View landing page
+            - feat: Link landing page to register page
+
+        * The more specific you can be, the better it is
+
+     ---------------
+     DATABASE DESIGN
+     ---------------
+        - A database design should be created that specifically accomplishes the user stories
+
+     ------------------
+     PROJECT MANAGEMENT
+     ------------------
+        - Buzzwords
+            - “Agile” - project management methodology of continuous cycles (ideals outlined in Agile Manifesto)
+            - “Waterfall” - project development in separate distinct phases
+            - “Scrum” - a specific flavor of Agile management using sprints and daily standups (can use Kanban boards)
+            - “Sprint” - typically a 2 week development lifecycle in Scrum
+            - “Kanban” - another flavor of Agile
+            - “Standup” - a quick daily meeting where each member gives update on:
+                    - what they’ve done
+                    - what they will do
+                    - identify any blockers (support needs)
