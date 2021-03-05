@@ -1,7 +1,6 @@
 ----------------
 PROJECT PLANNING
 ----------------
-
     1. Summarize the app ("elevator pitch") and identify CRUD entities
     2. Create user stories
     3. Extract a feature list from the user stories
@@ -19,3 +18,11 @@ PROJECT PLANNING
     ------------
     USER STORIES
     ------------
+        An explanation of an action a certain type of user can take in the application from their perspective.
+
+    ------------
+    FEATURE LIST
+    ------------
+        - A development task to complete a user story. Multiple tasks and subtasks may fall under the same story
+        - Need to have features vs. Nice to have features
+        - Be intentional and aware of the timeline
