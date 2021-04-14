@@ -1,0 +1,10 @@
+What can you do with Python?
+
+- Automate simple tasks
+- Search for files / editing them
+- Web scraping
+- Popular in DS and Machine Learning
+- Create websites
+    - Django
+    - Flask
+    - Create interactive dashboards
